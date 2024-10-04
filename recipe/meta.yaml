@@ -1,13 +1,13 @@
 {% set name = "behave-django" %}
-{% set version = "1.4.0" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/behave-django-{{ version }}.tar.gz
-  sha256: aecbc535699517100c1e443eadb4a5d761c2b1d2f4364d88c8e74a236c915c9c
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: e1c4d7e02ad6343a862246fb20ed9f850aa678d61497aad378b67d9b659f3f59
 
 build:
   noarch: python
