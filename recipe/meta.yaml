@@ -6,22 +6,25 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/behave_django-{{ version }}.tar.gz
   sha256: e1c4d7e02ad6343a862246fb20ed9f850aa678d61497aad378b67d9b659f3f59
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
     - python >=3.8
+    - setuptools >=64
+    - setuptools-scm >=8
     - pip
   run:
     - python >=3.8
+    - behave >=1.2.7.dev6
+    - django >=4.2
     - beautifulsoup4
-    - behave
 
 test:
   imports:
