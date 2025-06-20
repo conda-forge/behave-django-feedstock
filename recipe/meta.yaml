@@ -1,18 +1,18 @@
 {% set name = "behave-django" %}
-{% set version = "1.4.0" %}
+{% set version = "1.6.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/behave-django-{{ version }}.tar.gz
-  sha256: aecbc535699517100c1e443eadb4a5d761c2b1d2f4364d88c8e74a236c915c9c
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 189542fd45784a90c182ec300b1d8241bbe142bfd99df70f17d4b013e5a65861
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -20,9 +20,11 @@ requirements:
     - pip
     - setuptools
   run:
+    - django >=4.2
     - python >={{ python_min }}
     - beautifulsoup4
-    - behave
+    - behave >=1.2.7.dev6
+    # - django >=4.2
 
 test:
   imports:
